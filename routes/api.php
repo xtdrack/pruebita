@@ -2,6 +2,8 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\EventController;
 //RESET
 
 Route::post('/reset', 'ResetController@reset');
@@ -24,7 +26,7 @@ Route::post('/reset', 'ResetController@reset');
 
 //GET BALANCE
 
-Route::get('/balance', 'BalanceController@show');
+Route::get('/balance', [BalanceController::class, 'show'])->name('home');
 
 
 //RETIRO DE CUENTA QE NO EXISTE
@@ -40,4 +42,4 @@ Route::get('/balance', 'BalanceController@show');
 
 //transferencia de una cuenta que no existe
 
-Route::post('/event', 'EventController@store');
+Route::post('/event', [EventController::class, 'store'])->name('home');
